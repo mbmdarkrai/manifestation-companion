@@ -8,7 +8,7 @@
 ### Step 2: Push Your Code to GitHub
 
 ```bash
-cd manifestation-companion
+cd Manifestation
 git init
 git add .
 git commit -m "Initial commit"
