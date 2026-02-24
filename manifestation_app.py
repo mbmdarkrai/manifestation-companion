@@ -6,14 +6,17 @@ st.set_page_config(layout="wide")
 st.title("✨ Manifestation Companion")
 st.markdown("**AI Law of Attraction Coach**")
 
-api_key = st.sidebar.text_input("🔑 Anthropic API (optional)", type="password")
+# Lines 8-16 (around here ↓)
+api_key = st.sidebar.text_input("🔑 Anthropic API Key", type="password")
+
 client = None
-if api_key:
-    try:
-        client = anthropic.Anthropic(api_key=api_key)
-        st.sidebar.success("✅ AI ON")
-    except:
-        st.sidebar.error("Key issue")
+if api_key and api_key.strip():           # ← Line 12
+    try:                                 # ← Line 13
+        client = anthropic.Anthropic(api_key=api_key)  # Line 14
+        st.sidebar.success("✅ AI Ready!")              # Line 15  
+    except:                              # Line 16
+        st.sidebar.info("⚠️ Demo mode active")  # ← CHANGE THIS LINE
+
 
 tab1, tab2 = st.tabs(["🎯 Intention", "📊 Progress"])
 
