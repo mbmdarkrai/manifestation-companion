@@ -139,7 +139,9 @@ with tab5:
 with tab6:
     st.markdown("## Complete Manifestation Sessions")
     session_type = st.radio("Choose session:", ["Quick 5-min", "Full 20-min"])
-    goal_session = st.text_input("Your manifestation goal:", value=st.session_state.goal)
+    goal_session = st.text_input("Your manifestation goal:", 
+                            value=st.session_state.get('goal', ''), 
+                            key='goal_input')
     if st.button("Start Session", key="session_btn"):
         if goal_session:
             if client and api_key:
