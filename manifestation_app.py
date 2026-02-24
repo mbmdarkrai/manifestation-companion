@@ -37,3 +37,4 @@ with tab2:
     st.info("Daily tracking → soon!")
 
 st.markdown("*Claude AI + Streamlit*")
+
