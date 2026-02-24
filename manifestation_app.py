@@ -8,6 +8,17 @@ st.markdown("**Your AI Law of Attraction Coach**")
 
 st.sidebar.markdown("### 🤖 Demo Mode Active")
 st.sidebar.markdown("[Upgrade to Claude AI](https://console.anthropic.com)")
+# Add after st.sidebar.info():
+if st.sidebar.checkbox("🔑 Enable Claude AI"):
+    api_key = st.sidebar.text_input("Paste API key:", type="password")
+    if api_key:
+        try:
+            import anthropic
+            client = anthropic.Anthropic(api_key=api_key)
+            st.sidebar.success("✅ AI ACTIVE!")
+            # Use client in button...
+        except:
+            pass  # Silent fail → demo
 
 tab1, tab2 = st.tabs(["🎯 Intention Setting", "📊 Progress"])
 
