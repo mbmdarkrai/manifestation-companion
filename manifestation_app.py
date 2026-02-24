@@ -1,7 +1,28 @@
 import streamlit as st
-import anthropic
+import streamlit as st
+import random  # ← ADD THIS
 
 st.set_page_config(layout="wide")
+
+st.title("✨ Manifestation Companion")
+
+st.sidebar.info("🤖 **Demo Mode** - Enter goal → get coaching!")
+st.sidebar.markdown("[Get Claude API](https://console.anthropic.com) for full AI")
+
+tab1, tab2 = st.tabs(["🎯 Intention", "📊 Progress"])
+
+with tab1:
+    goal = st.text_input("**Your goal:**", key="goal")
+    if st.button("✨ Get Coaching", type="primary") and goal:
+        insights = [
+            f"**Visualize '{goal}' daily!** Feel it real now. Universe aligns perfectly.",
+            f"**'{goal}' is yours!** Speak it, feel it, receive it.",
+            f"**Perfect script:** 'I am so grateful for my {goal.lower()}. It feels AMAZING!'"
+        ]
+        st.balloons()
+        st.markdown("### 🎁 **Your Coach:**")
+        st.markdown(random.choice(insights))
+
 
 st.title("✨ Manifestation Companion")
 st.markdown("**AI Law of Attraction Coach**")
