@@ -22,7 +22,6 @@ with tab2:
     # Add your coaching logic here
     if st.button("Start Session"):
         st.session_state.coaching = True
-st.set_page_config(layout="wide", page_title="Manifestation Companion")
 
 st.title("✨ Manifestation Companion")
 st.markdown("**Your AI Law of Attraction Coach**")
