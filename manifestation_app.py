@@ -1,6 +1,29 @@
 import streamlit as st
 import random
+import streamlit as st
 
+# DARK THEME + CONFIG (line 1-5)
+st.set_page_config(
+    page_title="Manifestation Companion",
+    page_icon="✨",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    theme="dark"  # 👈 DARK MODE!
+)
+
+# Rest of your app...
+st.title("Manifestation Companion ✨")
+
+
+# Sidebar
+tab1, tab2 = st.tabs(["Daily Practice", "Coaching Session"])
+
+with tab2:
+    st.header("🧠 Personal Coaching")
+    st.write("AI-guided manifestation coaching...")
+    # Add your coaching logic here
+    if st.button("Start Session"):
+        st.session_state.coaching = True
 st.set_page_config(layout="wide", page_title="Manifestation Companion")
 
 st.title("✨ Manifestation Companion")
