@@ -2,13 +2,11 @@ import streamlit as st
 import random
 import streamlit as st
 
-# DARK THEME + CONFIG (line 1-5)
 st.set_page_config(
     page_title="Manifestation Companion",
     page_icon="✨",
     layout="wide",
-    initial_sidebar_state="expanded",
-    theme="dark"  # 👈 DARK MODE!
+    initial_sidebar_state="expanded"
 )
 
 # Rest of your app...
