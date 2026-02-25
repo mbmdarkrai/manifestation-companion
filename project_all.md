@@ -13,3 +13,20 @@
         LCM_AR100_AR20/
         iPSC/
         COMPARE/
+
+
+        cd /Users/mbm/Documents/Manifestation
+git status
+git add .
+git commit -m "Upgrade Claude option" --allow-empty
+git push origin main
+
+
+1. Cmd+Shift+G
+2. No changes? → git push anyway:
+Terminal: git push origin main
+
+
+#force
+git commit --allow-empty -m "Update"
+git push origin main --force
