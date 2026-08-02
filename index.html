@@ -1,157 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Manifestation Companion - AI Law of Attraction Coach</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #f1f5f9; line-height: 1.6; }
-        header { padding: 20px 0; background: rgba(0,0,0,0.3); border-bottom: 1px solid #38bdf8; }
-        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        nav h1 { font-size: 28px; color: #38bdf8; }
-        .nav-link { display: inline-block; background: #38bdf8; color: #0f172a; text-decoration: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        .nav-link.secondary { background: #334155; color: #f8fafc; }
-        .nav-link:hover { background: #0284c7; }
-        .nav-link.secondary:hover { background: #475569; }
-        section { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        .hero { text-align: center; }
-        .hero h2 { font-size: 48px; margin-bottom: 20px; color: #38bdf8; }
-        .hero p { font-size: 20px; color: #cbd5e1; margin-bottom: 30px; }
-        .cta-button { display: inline-block; text-decoration: none; background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%); color: white; padding: 15px 40px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; margin-right: 15px; }
-        .cta-button.secondary { background: #334155; }
-        .cta-button:hover { transform: scale(1.05); }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .feature { background: rgba(30, 41, 59, 0.8); padding: 30px; border-radius: 10px; border-left: 4px solid #38bdf8; }
-        .feature h3 { color: #38bdf8; margin-bottom: 15px; font-size: 20px; }
-        .feature p { color: #cbd5e1; }
-        .testimonials { background: rgba(0,0,0,0.3); padding: 40px; border-radius: 10px; }
-        .testimonial { background: rgba(56, 189, 248, 0.1); padding: 20px; margin-bottom: 20px; border-left: 3px solid #38bdf8; }
-        footer { text-align: center; padding: 30px; color: #94a3b8; border-top: 1px solid #334155; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifestation Companion</title>
+<style>
+  :root{
+    --bg1:#0f172a; --bg2:#1e293b; --text:#f1f5f9; --muted:#cbd5e1; --muted2:#94a3b8;
+    --accent:#38bdf8; --accent2:#0284c7; --card:rgba(30,41,59,.8); --border:#334155;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 100%);color:var(--text);line-height:1.6;min-height:100vh}
+  header{padding:20px 0;background:rgba(0,0,0,.3);border-bottom:1px solid var(--accent)}
+  nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px;flex-wrap:wrap;gap:10px}
+  nav h1{font-size:24px;color:var(--accent)}
+  .nav-link{display:inline-block;color:var(--text);text-decoration:none;padding:8px 14px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.05)}
+  .nav-link.secondary{background:#334155;color:#f8fafc}
+  .nav-link:hover{border-color:var(--accent);color:var(--accent)}
+  .nav-link.secondary:hover{border-color:var(--accent);color:var(--accent)}
+  .wrap{max-width:1200px;margin:0 auto;padding:30px 20px 60px}
+  h2{color:var(--accent);margin-bottom:16px}
+  .card{background:var(--card);padding:24px;border-radius:12px;border-left:4px solid var(--accent);margin-bottom:20px}
+  label{display:block;color:var(--muted);font-size:13px;margin:12px 0 6px}
+  input[type=text],select,textarea{
+    width:100%;padding:12px;border-radius:8px;border:1px solid var(--border);
+    background:#0b1220;color:var(--text);font-size:14px;font-family:inherit;outline:none;
+  }
+  textarea{min-height:100px;resize:vertical}
+  .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+  .row > div{flex:1;min-width:180px}
+  button{cursor:pointer;font-family:inherit}
+  .btn{background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);color:#04121f;border:none;padding:12px 22px;border-radius:8px;font-size:15px;font-weight:700}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text);font-weight:600}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+  .tabs button{background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);padding:9px 16px;border-radius:999px;font-size:13px}
+  .tabs button.active{border-color:var(--accent);color:var(--accent);background:rgba(56,189,248,.1)}
+  .panel{display:none}
+  .panel.active{display:block}
+  .out{white-space:pre-wrap;background:#0b1220;border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:16px;font-size:14px;color:var(--muted)}
+  .muted{color:var(--muted2);font-size:13px}
+  .goalbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .goalbar input{flex:1;min-width:240px}
+  .apikeybox{margin-top:14px;padding:14px;border:1px dashed var(--border);border-radius:10px}
+  .apikeybox.on{border-color:var(--accent)}
+  .toggle{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+  .toggle input{width:auto}
+  .streak{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+  .stat{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:14px 18px;min-width:120px;text-align:center}
+  .stat .n{font-size:26px;font-weight:700;color:var(--accent)}
+  .stat .l{font-size:11px;color:var(--muted2);margin-top:2px}
+  .logitem{border-top:1px solid var(--border);padding:10px 0;font-size:13px;color:var(--muted)}
+  .logitem:first-child{border-top:none}
+  footer{text-align:center;padding:30px;color:var(--muted2);border-top:1px solid var(--border);font-size:13px}
+  .pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:3px 10px;font-size:11px;color:var(--muted2);margin-left:8px}
+  .audiobar{position:fixed;left:0;right:0;bottom:0;background:rgba(15,23,42,.97);border-top:1px solid var(--accent);padding:10px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;z-index:50}
+  .audiobar select{width:auto;max-width:260px;padding:8px}
+  .audiobar .audioPlay{background:var(--accent);color:#04121f;border:none;border-radius:50%;width:38px;height:38px;font-size:15px;flex:none}
+  .audiobar input[type=range]{width:110px}
+  .audiobar .muted{white-space:nowrap}
+  body{padding-bottom:70px}
+</style>
 </head>
-<script>
-function launchApp() {
-    window.open('https://manifestation-companion-it6hsrctfjkxbsgah8cywb.streamlit.app/', '_blank', 'noopener,noreferrer');
-}
-function scrollToId(id) {
-    document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
-}
-</script>
-
 <body>
-    <header>
-        <nav>
-            <h1>✨ Manifestation Companion</h1>
-            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-                <a class="nav-link secondary" href="https://github.com/mbmdarkrai/manifestation-companion" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                <a class="nav-link" href="https://manifestation-companion-it6hsrctfjkxbsgah8cywb.streamlit.app/" target="_blank" rel="noopener noreferrer">Open Streamlit App</a>
-                <a class="nav-link secondary" href="/Users/mbm/Documents/app/Manifestation/app_v2/manifestation_app2..html" target="_blank" rel="noopener noreferrer">Open App File</a>
-            </div>
-        </nav>
-    </header>
+<header>
+  <nav>
+    <h1>✨ Manifestation Companion</h1>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span class="muted">Your AI-powered law of attraction coach</span>
+      <a class="nav-link secondary" href="https://github.com/mbmdarkrai/manifestation-companion" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="nav-link" href="https://manifestation-companion.streamlit.app" target="_blank" rel="noopener noreferrer">Open Live App</a>
+    </div>
+  </nav>
+</header>
 
-    <section class="hero">
-        <h2>Your AI-Powered Law of Attraction Coach</h2>
-        <p>Daily tools for manifestation, visualization, affirmations & aligned action</p>
-        <a class="cta-button" href="https://manifestation-companion-it6hsrctfjkxbsgah8cywb.streamlit.app/" target="_blank" rel="noopener noreferrer">🚀 Open Streamlit App</a>
-        <a class="cta-button secondary" href="https://github.com/mbmdarkrai/manifestation-companion" target="_blank" rel="noopener noreferrer">💻 View on GitHub</a>
-        <a class="cta-button secondary" href="/Users/mbm/Documents/app/Manifestation/app_v2/manifestation_app2..html" target="_blank" rel="noopener noreferrer">📄 Open App File</a>
-        <a class="cta-button secondary" href="#launch">📖 Learn More</a>
-    </section>
+<div class="wrap">
 
-    <section>
-        <h2 style="text-align: center; margin-bottom: 40px; color: #38bdf8;">7 Powerful Tools</h2>
-        <div class="features">
-            <div class="feature">
-                <h3>🎯 Intention Setting</h3>
-                <p>Clarify your deepest desires with AI coaching. Identify limiting beliefs and reframe your vision for success.</p>
-            </div>
-            <div class="feature">
-                <h3>💬 Personalized Affirmations</h3>
-                <p>Generate powerful affirmations tailored to your goals. Choose from Present Tense, Grateful, Becoming, or Belief styles.</p>
-            </div>
-            <div class="feature">
-                <h3>🎨 Guided Visualizations</h3>
-                <p>Experience sensory-rich visualization scripts (3, 5, or 10 minutes). Feel your success as if it's already real.</p>
-            </div>
-            <div class="feature">
-                <h3>📝 Future Self Letters</h3>
-                <p>Write letters from your future self 3 months, 6 months, 1 year, or 5 years ahead. Manifest with emotional power.</p>
-            </div>
-            <div class="feature">
-                <h3>✅ Aligned Actions</h3>
-                <p>Get 7 specific, doable daily actions aligned with your manifestation. Bridge belief with inspired action.</p>
-            </div>
-            <div class="feature">
-                <h3>🔄 Complete Sessions</h3>
-                <p>Quick 5-minute or full 20-minute manifestation sessions combining all tools for comprehensive practice.</p>
-            </div>
-            <div class="feature">
-                <h3>📊 Progress Tracking</h3>
-                <p>Log your daily practice and watch momentum build. Consistency strengthens your manifestation power.</p>
-            </div>
+  <div class="card">
+    <h2>Your goal</h2>
+    <div class="goalbar">
+      <input type="text" id="goalInput" placeholder="e.g. Land a leadership role I love, doubling my income within a year" />
+    </div>
+
+    <div class="apikeybox" id="apiBox">
+      <label class="toggle"><input type="checkbox" id="apiToggle" /> Personalize with your own Claude API key (optional — free templates work without it)</label>
+      <div id="apiFields" style="display:none;margin-top:10px">
+        <input type="text" id="apiKey" placeholder="sk-ant-... (kept in memory only, never saved or sent anywhere but Anthropic)" />
+        <p class="muted" style="margin-top:6px">Calls the Anthropic API directly from your browser. Your key is never stored or sent to us.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button data-tab="intention" class="active">🎯 Intention Setting</button>
+    <button data-tab="affirm">💬 Affirmations</button>
+    <button data-tab="visual">🎨 Visualization</button>
+    <button data-tab="letter">📝 Future Self Letter</button>
+    <button data-tab="actions">✅ Aligned Actions</button>
+    <button data-tab="session">🔄 Complete Session</button>
+    <button data-tab="progress">📊 Progress Tracking</button>
+  </div>
+
+  <div class="panel active" id="panel-intention">
+    <div class="card">
+      <h2>Intention Setting</h2>
+      <p class="muted">Clarify what you truly want and surface the belief that's in the way.</p>
+      <div class="row">
+        <button class="btn" id="runIntention">Clarify my intention</button>
+      </div>
+      <div class="out" id="outIntention">Enter a goal above, then click the button.</div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-affirm">
+    <div class="card">
+      <h2>Personalized Affirmations</h2>
+      <div class="row">
+        <div>
+          <label>Style</label>
+          <select id="affirmStyle">
+            <option value="present">Present Tense ("I am...")</option>
+            <option value="grateful">Grateful ("I'm grateful that...")</option>
+            <option value="becoming">Becoming ("I am becoming...")</option>
+            <option value="belief">Belief ("I believe...")</option>
+          </select>
         </div>
-    </section>
+      </div>
+      <div class="row"><button class="btn" id="runAffirm">Generate affirmations</button></div>
+      <div class="out" id="outAffirm">Enter a goal above, choose a style, then generate.</div>
+    </div>
+  </div>
 
-    <section>
-        <h2 style="text-align: center; margin-bottom: 40px; color: #38bdf8;">How It Works</h2>
-        <div style="background: rgba(30, 41, 59, 0.8); padding: 30px; border-radius: 10px;">
-            <ol style="font-size: 18px; color: #cbd5e1; line-height: 2;">
-                <li><strong style="color: #38bdf8;">Enter Your Goal</strong> - Be specific about what you want to manifest</li>
-                <li><strong style="color: #38bdf8;">Choose a Tool</strong> - Select from 7 manifestation practices</li>
-                <li><strong style="color: #38bdf8;">Get AI Coaching</strong> - Optional: Add your Claude API key for personalized responses</li>
-                <li><strong style="color: #38bdf8;">Practice Daily</strong> - Use one or multiple tools each day</li>
-                <li><strong style="color: #38bdf8;">Track Progress</strong> - Log your practice and watch alignment happen</li>
-                <li><strong style="color: #38bdf8;">Manifest Reality</strong> - See your goals materialize through consistent practice</li>
-            </ol>
+  <div class="panel" id="panel-visual">
+    <div class="card">
+      <h2>Guided Visualization</h2>
+      <div class="row">
+        <div>
+          <label>Length</label>
+          <select id="visualLen">
+            <option value="3">3 minutes</option>
+            <option value="5" selected>5 minutes</option>
+            <option value="10">10 minutes</option>
+          </select>
         </div>
-    </section>
+      </div>
+      <div class="row"><button class="btn" id="runVisual">Generate visualization script</button></div>
+      <div class="out" id="outVisual">Enter a goal above, choose a length, then generate.</div>
+    </div>
+  </div>
 
-    <section>
-        <h2 style="text-align: center; margin-bottom: 40px; color: #38bdf8;">Why This Works</h2>
-        <div class="testimonials">
-            <div class="testimonial">
-                <strong style="color: #38bdf8;">The Science of Manifestation</strong>
-                <p>Daily practice rewires your subconscious beliefs, aligns your energy with your desires, and activates the Law of Attraction.</p>
-            </div>
-            <div class="testimonial">
-                <strong style="color: #38bdf8;">AI-Powered Personalization</strong>
-                <p>Claude AI creates customized affirmations, visualizations, and coaching specific to YOUR goals and learning style.</p>
-            </div>
-            <div class="testimonial">
-                <strong style="color: #38bdf8;">Complete System</strong>
-                <p>All 7 tools work together: Intention → Affirmations → Visualization → Scripting → Actions → Sessions → Tracking</p>
-            </div>
-            <div class="testimonial">
-                <strong style="color: #38bdf8;">Free or Premium</strong>
-                <p>Use for free with simulated responses, or add your Claude API key for unlimited personalized AI coaching.</p>
-            </div>
+  <div class="panel" id="panel-letter">
+    <div class="card">
+      <h2>Future Self Letter</h2>
+      <div class="row">
+        <div>
+          <label>Time ahead</label>
+          <select id="letterTime">
+            <option value="3 months">3 months</option>
+            <option value="6 months">6 months</option>
+            <option value="1 year" selected>1 year</option>
+            <option value="5 years">5 years</option>
+          </select>
         </div>
-    </section>
+      </div>
+      <div class="row"><button class="btn" id="runLetter">Write my letter</button></div>
+      <div class="out" id="outLetter">Enter a goal above, choose a timeframe, then write.</div>
+    </div>
+  </div>
 
-    <section id="launch" style="text-align: center;">
-        <h2 style="margin-bottom: 30px; color: #38bdf8;">Ready to Manifest?</h2>
-        <p style="font-size: 18px; margin-bottom: 30px; color: #cbd5e1;">Your AI manifestation coach is waiting. Launch the app and start attracting your best life today.</p>
-        <a class="cta-button" href="https://manifestation-companion-it6hsrctfjkxbsgah8cywb.streamlit.app/" target="_blank" rel="noopener noreferrer">🚀 Launch Manifestation App</a>
-        <p style="margin-top: 30px; color: #94a3b8; font-size: 14px;">Free to use • Optional API integration • No ads • Open source</p>
-    </section>
+  <div class="panel" id="panel-actions">
+    <div class="card">
+      <h2>Aligned Actions</h2>
+      <p class="muted">7 specific, doable actions that bridge belief with inspired action.</p>
+      <div class="row"><button class="btn" id="runActions">Get my 7 actions</button></div>
+      <div class="out" id="outActions">Enter a goal above, then click the button.</div>
+    </div>
+  </div>
 
-    <footer>
-        <p>✨ Manifestation Companion • Powered by Claude AI ✨</p>
-        <p style="margin-top: 10px; font-size: 12px;">All content for personal manifestation practice. Manifestation results vary by individual.</p>
-    </footer>
+  <div class="panel" id="panel-session">
+    <div class="card">
+      <h2>Complete Session</h2>
+      <div class="row">
+        <div>
+          <label>Length</label>
+          <select id="sessionLen">
+            <option value="quick">Quick (5 min): intention + affirmations</option>
+            <option value="full" selected>Full (20 min): all tools combined</option>
+          </select>
+        </div>
+      </div>
+      <div class="row"><button class="btn" id="runSession">Run session</button></div>
+      <div class="out" id="outSession">Enter a goal above, choose a session length, then run it.</div>
+    </div>
+  </div>
 
-    <script>
-        function scrollToId(id) {
-            const element = document.getElementById(id);
-            if (element) element.scrollIntoView({ behavior: 'smooth' });
-        }
-       function launchApp() {
-    window.location.href = 'https://manifestation-companion.streamlit.app';  // ← YOUR URL HERE
+  <div class="panel" id="panel-progress">
+    <div class="card">
+      <h2>Progress Tracking</h2>
+      <div class="streak">
+        <div class="stat"><div class="n" id="statStreak">0</div><div class="l">day streak</div></div>
+        <div class="stat"><div class="n" id="statTotal">0</div><div class="l">total sessions</div></div>
+        <div class="stat"><div class="n" id="statTools">0</div><div class="l">tools used</div></div>
+      </div>
+      <div class="row">
+        <button class="btn" id="logPractice">Log today's practice</button>
+        <button class="btn ghost" id="clearLog">Clear log</button>
+      </div>
+      <div id="logList" style="margin-top:16px"></div>
+    </div>
+  </div>
+
+  <p class="muted" style="text-align:center;margin-top:10px">Free to use • Optional API integration • No ads • Manifestation results vary by individual — this is a reflection and motivation tool, not a guarantee.</p>
+</div>
+
+<div class="audiobar">
+  <button class="audioPlay" id="audioPlay" title="Play binaural audio">▶</button>
+  <select id="audioPreset">
+    <option value="">No binaural audio</option>
+    <option value="theta528">Deep Visualization (Theta 6Hz + 528Hz)</option>
+    <option value="alphaLoa">Law of Attraction Focus (Alpha 10Hz)</option>
+    <option value="sleep">Sleep Manifesting (Theta 4Hz)</option>
+  </select>
+  <label class="muted" style="display:flex;align-items:center;gap:6px">Vol
+    <input type="range" id="audioVolume" min="0" max="0.3" step="0.01" value="0.12" />
+  </label>
+  <span class="muted">🎧 Headphones required — don't use while driving</span>
+</div>
+
+<footer>✨ Manifestation Companion ✨</footer>
+
+<script>
+const STORE_KEY = "manifestation_companion_log_v1";
+let log = JSON.parse(localStorage.getItem(STORE_KEY) || "[]");
+
+// ---------- tabs ----------
+document.getElementById("tabs").addEventListener("click", (e) => {
+  if (e.target.tagName !== "BUTTON") return;
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("active", b === e.target));
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  document.getElementById("panel-" + e.target.dataset.tab).classList.add("active");
+  if (e.target.dataset.tab === "progress") renderProgress();
+});
+
+document.getElementById("apiToggle").addEventListener("change", (e) => {
+  document.getElementById("apiFields").style.display = e.target.checked ? "block" : "none";
+  document.getElementById("apiBox").classList.toggle("on", e.target.checked);
+});
+
+function getGoal(){
+  const g = document.getElementById("goalInput").value.trim();
+  return g || "living a life fully aligned with what I want";
 }
-;
-        
-    </script>
+function useApi(){ return document.getElementById("apiToggle").checked && document.getElementById("apiKey").value.trim(); }
+function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+// ---------- optional live API call ----------
+async function callClaude(prompt){
+  const key = document.getElementById("apiKey").value.trim();
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "x-api-key": key,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true"
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-5",
+      max_tokens: 700,
+      messages: [{ role: "user", content: prompt }]
+    })
+  });
+  if (!res.ok) throw new Error("API error " + res.status);
+  const data = await res.json();
+  return data.content && data.content[0] ? data.content[0].text : "(no response)";
+}
+
+async function runTool(outId, promptBuilder, templateBuilder){
+  const out = document.getElementById(outId);
+  if (useApi()){
+    out.textContent = "Thinking...";
+    try {
+      out.textContent = await callClaude(promptBuilder());
+      return;
+    } catch (err){
+      out.textContent = templateBuilder() + "\n\n(Live API call failed — showing the free template instead: " + err.message + ")";
+      return;
+    }
+  }
+  out.textContent = templateBuilder();
+}
+
+// ---------- Intention Setting ----------
+function intentionTemplate(){
+  const goal = getGoal();
+  const beliefs = [
+    "that you're not ready yet",
+    "that people like you don't get this",
+    "that it's selfish to want more",
+    "that you'll have to sacrifice everything else to get it",
+    "that timing is never right"
+  ];
+  return `INTENTION CLARITY
+
+Your stated goal: "${goal}"
+
+Deeper why: You're not just after the outcome itself — you're after how it will make you feel: capable, secure, proud, free. Naming that feeling is often more motivating than the goal itself.
+
+Likely limiting belief in the way: the quiet story ${pick(beliefs)}. Notice if that thought shows up when you think about this goal — it's worth questioning, not obeying.
+
+Reframed intention: "I am worthy of ${goal.toLowerCase()}, and I'm taking steps toward it starting today."
+
+Try this: write your intention in one sentence, present tense, as if it's already unfolding — then read it aloud each morning this week.`;
+}
+function intentionPrompt(){
+  return `Act as a warm, grounded manifestation/law-of-attraction coach. The user's goal is: "${getGoal()}". Help them clarify their true intention: identify the underlying emotional "why", name a likely limiting belief that could be blocking them, and offer one reframed, present-tense intention statement. Keep it under 200 words, encouraging and specific, no generic filler.`;
+}
+document.getElementById("runIntention").addEventListener("click", () =>
+  runTool("outIntention", intentionPrompt, intentionTemplate));
+
+// ---------- Affirmations ----------
+function affirmTemplate(){
+  const goal = getGoal();
+  const style = document.getElementById("affirmStyle").value;
+  const starters = {
+    present: [`I am ${goal.toLowerCase()}.`, `I attract everything I need to ${goal.toLowerCase()}.`, `I move through today fully capable of ${goal.toLowerCase()}.`],
+    grateful: [`I'm grateful that ${goal.toLowerCase()} is unfolding for me.`, `Thank you for the people and opportunities helping me ${goal.toLowerCase()}.`, `I'm grateful for every small sign that I'm on the right path.`],
+    becoming: [`I am becoming the person who ${goal.toLowerCase()}.`, `Every day I am becoming more aligned with ${goal.toLowerCase()}.`, `I am becoming someone who takes consistent action toward this.`],
+    belief: [`I believe I am capable of ${goal.toLowerCase()}.`, `I believe the right opportunities are already on their way.`, `I believe consistent effort compounds into real change.`]
+  };
+  return `AFFIRMATIONS (${style} style)\n\n` + starters[style].map((s,i)=>`${i+1}. ${s}`).join("\n") +
+    `\n\nUse these: pick one, repeat it slowly for 60 seconds each morning, and notice any resistance that comes up — that resistance is exactly what you're working through.`;
+}
+function affirmPrompt(){
+  const style = document.getElementById("affirmStyle").value;
+  return `Write 3 personalized manifestation affirmations in the "${style}" style for someone whose goal is: "${getGoal()}". Make them specific to the goal, not generic. Return them as a numbered list, then one short line of practice guidance.`;
+}
+document.getElementById("runAffirm").addEventListener("click", () =>
+  runTool("outAffirm", affirmPrompt, affirmTemplate));
+
+// ---------- Visualization ----------
+function visualTemplate(){
+  const goal = getGoal();
+  const len = document.getElementById("visualLen").value;
+  const beats = {
+    "3": ["Settle in, breathe, picture the moment your goal becomes real.", "Notice the sounds, colors, and feelings around you.", "Let yourself smile — this is already yours."],
+    "5": ["Settle into a comfortable position and take three slow breaths.", "Picture the exact moment you realize your goal has happened — where are you, who's there.", "Zoom in on the details: what you're wearing, what you can hear, the temperature of the air.", "Feel the emotion fully — pride, relief, joy — let it fill your chest.", "Open your eyes and carry that feeling with you into the rest of your day."],
+    "10": ["Settle in, close your eyes, and take five slow breaths to arrive fully in the present.", "Picture the day your goal is realized — start with the moment you wake up.", "Walk through the day in detail: the people around you, the environment, your own posture and confidence.", "Notice a specific conversation where someone acknowledges your success.", "Feel the full emotional payoff — let it move through your whole body.", "Ask your future self one question about how they got here, and listen for the answer.", "Thank yourself for doing the work, then gently open your eyes."]
+  };
+  return `VISUALIZATION SCRIPT — ${len} minutes\nGoal: ${goal}\n\n` + beats[len].map((b,i)=>`${i+1}. ${b}`).join("\n");
+}
+function visualPrompt(){
+  const len = document.getElementById("visualLen").value;
+  return `Write a ${len}-minute guided visualization script (as numbered steps, sensory and specific) for someone manifesting: "${getGoal()}". Keep it grounded and vivid, not cheesy.`;
+}
+document.getElementById("runVisual").addEventListener("click", () =>
+  runTool("outVisual", visualPrompt, visualTemplate));
+
+// ---------- Future Self Letter ----------
+function letterTemplate(){
+  const goal = getGoal();
+  const time = document.getElementById("letterTime").value;
+  return `A LETTER FROM YOUR FUTURE SELF, ${time.toUpperCase()} FROM NOW\n\nDear present-day me,\n\nI'm writing from ${time} ahead, and I want you to know: ${goal} happened. Not all at once, and not without doubt along the way — but it happened because you kept showing up on the ordinary days, not just the inspired ones.\n\nThe turning point wasn't a single big moment. It was the accumulation of small, unglamorous choices you made even when you weren't sure they were working. Trust that process more than you currently do.\n\nOne thing I wish you knew sooner: the version of you asking "am I ready" was already ready. Readiness was never the blocker — starting was.\n\nKeep going. I'm proof it's worth it.\n\nWith love,\nYour future self`;
+}
+function letterPrompt(){
+  const time = document.getElementById("letterTime").value;
+  return `Write a warm, specific letter from the user's future self, ${time} ahead, to their present self. Their goal is: "${getGoal()}". The letter should describe the goal as achieved, reflect on what made the difference, and end with encouragement. Keep it under 220 words, emotionally resonant, not generic.`;
+}
+document.getElementById("runLetter").addEventListener("click", () =>
+  runTool("outLetter", letterPrompt, letterTemplate));
+
+// ---------- Aligned Actions ----------
+function actionsTemplate(){
+  const goal = getGoal();
+  const actions = [
+    `Write down exactly what "${goal}" looks like when achieved — specific and measurable.`,
+    `Identify one person who has done something similar and send them a message this week.`,
+    `Block 25 minutes tomorrow morning for focused work on this, before checking your phone.`,
+    `Remove one small obstacle in your environment that's been quietly slowing you down.`,
+    `Say your intention out loud to one person you trust — accountability compounds momentum.`,
+    `Do the smallest possible version of the next step today, even imperfectly.`,
+    `End today by writing one sentence about progress made, however small.`
+  ];
+  return `7 ALIGNED ACTIONS\nGoal: ${goal}\n\n` + actions.map((a,i)=>`${i+1}. ${a}`).join("\n") +
+    `\n\nPick one to do today. Small, consistent action is what turns intention into reality.`;
+}
+function actionsPrompt(){
+  return `Give 7 specific, doable, non-generic actions someone can take this week to move toward this goal: "${getGoal()}". Number them 1-7, each one sentence, concrete and immediately actionable — not vague advice.`;
+}
+document.getElementById("runActions").addEventListener("click", () =>
+  runTool("outActions", actionsPrompt, actionsTemplate));
+
+// ---------- Complete Session ----------
+async function runSession(){
+  const out = document.getElementById("outSession");
+  const len = document.getElementById("sessionLen").value;
+  out.textContent = "Building your session...";
+  let parts = [];
+  if (len === "quick"){
+    parts = [intentionTemplate(), affirmTemplate()];
+  } else {
+    parts = [intentionTemplate(), affirmTemplate(), visualTemplate(), letterTemplate(), actionsTemplate()];
+  }
+  out.textContent = parts.join("\n\n" + "—".repeat(30) + "\n\n");
+  addLogEntry(len === "quick" ? "Quick session" : "Full session");
+}
+document.getElementById("runSession").addEventListener("click", runSession);
+
+// ---------- Progress Tracking ----------
+function addLogEntry(toolName){
+  log.push({ date: new Date().toISOString().slice(0,10), tool: toolName, ts: Date.now() });
+  localStorage.setItem(STORE_KEY, JSON.stringify(log));
+}
+document.getElementById("logPractice").addEventListener("click", () => {
+  addLogEntry("Manual log entry");
+  renderProgress();
+});
+document.getElementById("clearLog").addEventListener("click", () => {
+  log = [];
+  localStorage.setItem(STORE_KEY, JSON.stringify(log));
+  renderProgress();
+});
+
+function computeStreak(dates){
+  const uniqueDates = [...new Set(dates)].sort().reverse();
+  if (uniqueDates.length === 0) return 0;
+  let streak = 0;
+  let cursor = new Date();
+  for (let i = 0; i < uniqueDates.length; i++){
+    const d = cursor.toISOString().slice(0,10);
+    if (uniqueDates.includes(d)){
+      streak++;
+      cursor.setDate(cursor.getDate() - 1);
+    } else if (i === 0 && uniqueDates[0] !== d) {
+      break;
+    } else {
+      break;
+    }
+  }
+  return streak;
+}
+
+function renderProgress(){
+  const dates = log.map(e => e.date);
+  document.getElementById("statStreak").textContent = computeStreak(dates);
+  document.getElementById("statTotal").textContent = log.length;
+  document.getElementById("statTools").textContent = new Set(log.map(e => e.tool)).size;
+  const list = document.getElementById("logList");
+  if (log.length === 0){
+    list.innerHTML = '<p class="muted">No practice logged yet.</p>';
+    return;
+  }
+  list.innerHTML = log.slice().reverse().slice(0,30).map(e =>
+    `<div class="logitem">${e.date} — ${e.tool}</div>`
+  ).join("");
+}
+
+// auto-log whenever a tool actually runs (not just session)
+["runIntention","runAffirm","runVisual","runLetter","runActions"].forEach(id => {
+  document.getElementById(id).addEventListener("click", () => {
+    const names = { runIntention:"Intention Setting", runAffirm:"Affirmations", runVisual:"Visualization", runLetter:"Future Self Letter", runActions:"Aligned Actions" };
+    addLogEntry(names[id]);
+  });
+});
+
+renderProgress();
+
+// ---------- Binaural audio ----------
+const audioPresets = {
+  theta528: { carrier: 528, beat: 6 },
+  alphaLoa: { carrier: 200, beat: 10 },
+  sleep:    { carrier: 150, beat: 4 }
+};
+let audioCtx = null, oscL = null, oscR = null, masterGain = null;
+
+function stopBinaural(){
+  if (oscL){ try{ oscL.stop(); }catch(e){} oscL.disconnect(); oscL = null; }
+  if (oscR){ try{ oscR.stop(); }catch(e){} oscR.disconnect(); oscR = null; }
+  if (audioCtx){ audioCtx.close(); audioCtx = null; }
+  document.getElementById("audioPlay").textContent = "▶";
+}
+
+function startBinaural(presetKey){
+  stopBinaural();
+  const p = audioPresets[presetKey];
+  if (!p) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const merger = audioCtx.createChannelMerger(2);
+  oscL = audioCtx.createOscillator();
+  oscR = audioCtx.createOscillator();
+  oscL.type = "sine"; oscR.type = "sine";
+  oscL.frequency.value = p.carrier;
+  oscR.frequency.value = p.carrier + p.beat;
+  masterGain = audioCtx.createGain();
+  masterGain.gain.value = parseFloat(document.getElementById("audioVolume").value);
+  oscL.connect(merger, 0, 0);
+  oscR.connect(merger, 0, 1);
+  merger.connect(masterGain);
+  masterGain.connect(audioCtx.destination);
+  oscL.start(); oscR.start();
+  document.getElementById("audioPlay").textContent = "⏸";
+}
+
+document.getElementById("audioPlay").addEventListener("click", () => {
+  const preset = document.getElementById("audioPreset").value;
+  if (audioCtx){ stopBinaural(); return; }
+  if (!preset){ document.getElementById("audioPreset").focus(); return; }
+  startBinaural(preset);
+});
+document.getElementById("audioPreset").addEventListener("change", (e) => {
+  if (audioCtx) { // switch track live if already playing
+    if (e.target.value) startBinaural(e.target.value);
+    else stopBinaural();
+  }
+});
+document.getElementById("audioVolume").addEventListener("input", (e) => {
+  if (masterGain) masterGain.gain.value = parseFloat(e.target.value);
+});
+</script>
 </body>
 </html>
